@@ -2,7 +2,9 @@ package entities;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import java.util.Collection;
 
 @Entity
 public class Book {
@@ -10,23 +12,24 @@ public class Book {
     @Id
     String bookName;
 
-    @ManyToOne
-    Author author;
+    @ManyToMany
+    Collection<Author> authors;
 
-    public Author getAuthor() {
-        return author;
+    public Collection<Author> getAuthors() {
+        return authors;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
+    public void setAuthors(Collection<Author> authors) {
+        this.authors = authors;
     }
+
 
     public Book() {
     }
 
-    public Book(String bookName, Author author) {
+    public Book(String bookName, Collection<Author> authors) {
         this.bookName = bookName;
-        this.author = author;
+        this.authors = authors;
     }
 
     @Override

@@ -23,8 +23,8 @@ public class Author {
     @ElementCollection
     List<String> Subjects=new ArrayList<>(3);
 
-    //Ques.16 one to many - without additional table
-    @OneToMany(mappedBy = "author",cascade = CascadeType.ALL)
+    //Ques.17 many to many
+    @ManyToMany(mappedBy = "authors")
     Collection<Book> books;
 
      public Author() {

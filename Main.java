@@ -96,13 +96,26 @@ public class Main {
             author5.setSubjects(subjects);
             author5.setAddress(address);
 
+            Collection<Author> authors=new HashSet<Author>();
+            authors.add(author3);
+            authors.add(author4);
+            authors.add(author5);
 
-            Book book1=new Book("Book1",author3);
-            Book book2=new Book("Book2",author3);
-            Book book5=new Book("Book5",author4);
-            Book book6=new Book("Book6",author4);
-            Book book7=new Book("Book7",author5);
-            Book book8=new Book("Book8",author5);
+
+            Book book1=new Book("Book1",authors);
+            Book book2=new Book("Book2",authors);
+            Book book5=new Book("Book5",authors);
+            Book book6=new Book("Book6",authors);
+            Book book7=new Book("Book7",authors);
+            Book book8=new Book("Book8",authors);
+
+            session.save(book1);
+            session.save(book2);
+            session.save(book5);
+            session.save(book6);
+            session.save(book7);
+            session.save(book8);
+
 
             Collection<Book> books=new HashSet<Book>();
             books.add(book1);
