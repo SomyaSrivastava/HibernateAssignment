@@ -9,10 +9,7 @@ import org.hibernate.Session;
 
 import javax.persistence.metamodel.EntityType;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static utils.HibernateUtil.getSession;
 
@@ -89,30 +86,56 @@ public class Main {
             session.save(book1);
             Book book2=new Book("Book2");
             session.save(book2);
-            Book book3=new Book("Book3");
-            session.save(book3);
+//            Book book3=new Book("Book3");
+//            session.save(book3);
             Book book4=new Book("Book4");
             session.save(book4);
 
-            List<Book>books = new ArrayList<>();
+            Book book5=new Book("Book5");
+            session.save(book5);
+            Book book6=new Book("Book6");
+            session.save(book6);
+            Book book7=new Book("Book7");
+            session.save(book7);
+            Book book8=new Book("Book8");
+            session.save(book8);
+            Book book9=new Book("Book9");
+            session.save(book9);
+            Book book10=new Book("Book10");
+            session.save(book10);
+//            session.save(book4);
+
+            Collection<Book> books=new HashSet<Book>();
             books.add(book1);
             books.add(book2);
-            books.add(book3);
-            books.add(book4);
+//            books.add(book3);
+//            books.add(book4);
+
+            Collection<Book> books1=new HashSet<Book>();
+            books1.add(book5);
+            books1.add(book6);
+
+            Collection<Book> books2=new HashSet<Book>();
+            books2.add(book7);
+            books2.add(book8);
+
+            Collection<Book> books3=new HashSet<Book>();
+            books3.add(book9);
+            books3.add(book10);
+
 
             Author author3=new Author(4,"abc","Sharma",23);
             author3.setDob(new Date());
             author3.setSubjects(subjects);
-            author3.setBook(book1);
-//            author3.setBooks(books);
-
+//            author3.setBook(book1);
+            author3.setBooks(books);
             author3.setAddress(address);
             session.save(author3);
 
             Author author4=new Author(5,"xcq","Sharma",23);
             author4.setDob(new Date());
-            author4.setBook(book2);
-//            author4.setBooks(books);
+//            author4.setBook(book2);
+            author4.setBooks(books1);
             author4.setSubjects(subjects);
             author4.setAddress(address);
             session.save(author4);
@@ -120,16 +143,16 @@ public class Main {
             Author author5=new Author(6,"qwqw","Sharma",23);
             author5.setDob(new Date());
             author5.setSubjects(subjects);
-            author5.setBook(book3);
-//            author5.setBooks(books);
+//            author5.setBook(book3);
+            author5.setBooks(books2);
             author5.setAddress(address);
             session.save(author5);
 
             Author author6=new Author(7,"qqq","Sharma",23);
             author6.setDob(new Date());
             author6.setSubjects(subjects);
-            author6.setBook(book4);
-//            author6.setBooks(books);
+//            author6.setBook(book4);
+            author6.setBooks(books3);
             author6.setAddress(address);
             session.save(author6);
 

@@ -9,6 +9,9 @@ public class Book {
     @Id
     String bookName;
 
+    public Book() {
+    }
+
     public Book(String bookName) {
         this.bookName = bookName;
     }

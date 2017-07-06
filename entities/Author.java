@@ -3,10 +3,7 @@ package entities;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @ Entity
 public class Author {
@@ -24,18 +21,19 @@ public class Author {
     @Embedded
     Address  address;
     @ElementCollection
-    List<String> Subjects=new ArrayList<String>(3);
+    List<String> Subjects=new ArrayList<>(3);
 
     //Ques.15
-    @OneToOne
-    @JoinColumn(name="Book_join_column")
-    Book book;
+//    @OneToOne
+//    @JoinColumn(name="Book_join_column")
+//    Book book;
 
     //Ques.16 one to many - unidirectional
-//    @OneToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(joinColumns = @JoinColumn(name="author_id"),
-//    inverseJoinColumns = @JoinColumn(name = "book_id"))
-//    List<Book> books=new ArrayList<>();
+    @OneToMany
+    @JoinTable(
+            joinColumns = @JoinColumn(name="author_id"),
+    inverseJoinColumns = @JoinColumn(name = "book_id"))
+    Collection<Book> books;
 
      public Author() {
      }
@@ -48,24 +46,23 @@ public class Author {
          this.age = age;
     }
 
-
-//    public List<Book> getBooks() {
-//        return books;
-//    }
-//
-//    public void setBooks(List<Book> books) {
-//        this.books = books;
-//    }
-//
-
-//    Ques15 :
-    public Book getBook() {
-        return book;
+    public Collection<Book> getBooks() {
+        return books;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setBooks(Collection<Book> books) {
+        this.books = books;
     }
+
+
+//  s Ques15 :
+//    public Book getBook() {
+//        return book;
+//    }
+//
+//    public void setBook(Book book) {
+//        this.book = book;
+//    }
 
     public List<String> getSubjects() {
         return Subjects;
