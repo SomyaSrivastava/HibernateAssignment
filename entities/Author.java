@@ -23,16 +23,11 @@ public class Author {
     @ElementCollection
     List<String> Subjects=new ArrayList<>(3);
 
-    //Ques.15
-//    @OneToOne
-//    @JoinColumn(name="Book_join_column")
-//    Book book;
-
-    //Ques.16 one to many - unidirectional
-    @OneToMany
+    //Ques.16 one to many - bidirectional
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             joinColumns = @JoinColumn(name="author_id"),
-    inverseJoinColumns = @JoinColumn(name = "book_id"))
+            inverseJoinColumns = @JoinColumn(name = "book_id"))
     Collection<Book> books;
 
      public Author() {
